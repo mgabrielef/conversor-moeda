@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/style.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <title>CONVERSOR DE MOEDAS</title>
+</head>
+  <body>
+    <main class="container">
+      <h1>Conversor de Moedas</h1>
+      <form form action="{{ url_for('converter')}}" method="POST">
+        <input type="text" name="valor" placeholder="Valor a ser convertido"><br>
+        <select name="select" id="moeda">
+          <option value="" selected disabled hidden>Sua moeda</option>
+          {% for i in range(0, len) %}
+          <option>{{lista[i]}}</option>
+          {% endfor %}
+        </select>
+        <select name="select2" id="moeda2">
+          <option value="" selected disabled hidden>Converter para</option>
+          {% for i in range(0, len) %}
+          <option>{{lista[i]}}</option>
+          {% endfor %}
+        </select><br>
+        <input type="submit" name="botao" href="templates/converter.html">
+      </form>
+    </main>
+    <script>
+        $(document).ready(function() {
+            $('#moeda').select2();
+            $('#moeda2').select2();
+        });
+    </script>
+  </body>
+</html>
